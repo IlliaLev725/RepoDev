@@ -51,7 +51,7 @@ jobs:
       with:
         file: Dockerfile_tests
         push: false
-        tags: ${{ env.REGISTRY }}/${{ env.REPO }}:tests
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:tests
 
     - name: Run tests
       id: run-tests
