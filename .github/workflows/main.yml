@@ -38,8 +38,10 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v5
+    - name: Build and push Docker image
+      uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
       with:
+        context: .
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ steps.tag_vesrion.outputs.new_tag }} 
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }} 
