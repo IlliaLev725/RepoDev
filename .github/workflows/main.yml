@@ -44,7 +44,11 @@ jobs:
         context: .
         push: true
         tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }} 
+        labels: ${{ steps.meta.outputs.labels }}
+
+    - name: Set repository name to lowercase
+      run: |
+        echo "REPO_NAME=${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
 
     - name: Build image with tests
       uses: docker/build-push-action@v5
