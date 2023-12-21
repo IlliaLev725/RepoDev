@@ -1,0 +1,7 @@
+FROM ghcr.io/illialev725/repodev:main
+
+RUN pip3 install coverage
+
+COPY tests /workdir
+
+ENTRYPOINT [ "python3", "tests.py" ]
